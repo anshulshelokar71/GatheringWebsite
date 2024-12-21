@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Antarang '24</title>
+    <title>Antarang '25</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -33,6 +33,14 @@
 
     <link rel="stylesheet" href="css/style.css" />
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+    <!-- Include Bootstrap CSS & JS for convenience -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
   </head>
 
   <body>
@@ -52,10 +60,321 @@
           margin: 10px; /* Add margin around each card for spacing */
         }
 
+            /* Navbar styling */
+    .header-area {
+      background-color: #000;
+      border-bottom: 2px solid  black;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-area .logo img {
+      max-height: 100px;
+    }
+
+    .main-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .main-menu ul li a {
+      text-decoration: none;
+      color: #333;
+      padding: 10px 15px;
+      transition: color 0.3s ease;
+    }
+
+    .main-menu ul li a:hover {
+      color: red;
+    }
+
+    /* Mobile toggler */
+
+    .navbar-collapse {
+  border: none;  /* Remove the border from the collapsed navbar */
+  box-shadow: none; /* Remove any shadow effect */
+}
+
+    .navbar-toggler {
+      border: none;
+      background-color: #333;
+      color: #fff;
+      padding:  12px; 
+      border-radius: 5px;
+      box-shadow: none;
+    }
+
+    .navbar-toggler-div {
+    margin: 0;
+    padding: 0;
+    border: none;
+    overflow: hidden; /* Prevent extra content from showing */
+}
+
+    .navbar-toggler:hover {
+      background-color: #555;
+    }
+
+    /* Mobile menu */
+    .navbar-nav .nav-link {
+      color: #333;
+      padding: 10px 15px;
+      text-align: center;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: red;
+    }
+
+    /* Spacing between navbar and slider */
+    .space-below-navbar {
+      margin-top: 20px;
+    }
+
+    /* Slider styling */
+    .slider_area {
+      background-image: url('img/slider-bg.jpg'); /* Replace with your image */
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      height: 150px; /* Adjust as needed */
+      padding-top: 20px;
+    }
+
+    .slider_area .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .slider_text h3 {
+      color: #fff;
+      font-size: 118px;
+      font-family: 'Neon', cursive;
+      margin: 0;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
         .slider_bg_1.overlay {
           background-color: black; /* Set background color to black */
         }
       }
+
+      .single_slider{
+        height: 200px;
+      }
+
+
+      /* Show only the toggler button on small devices */
+@media (max-width: 768px) {
+    .navbar-toggler-div {
+        display: block;
+    }
+
+    .navbar-collapse {
+        display: none; /* Hide the collapsing menu */
+    }
+}
+
+/* Show the full navigation on larger devices */
+@media (min-width: 769px) {
+    .navbar-toggler-div {
+        display: none; /* Hide the toggler button */
+    }
+
+    .navbar-collapse {
+        display: block; /* Show the navigation menu */
+    }
+}
+
+/* For smaller screens (below 768px) */
+@media only screen and (max-width: 768px) {
+  .slider_area {
+    background-image: url(../img/banner/banner2.png); /* Apply background image for small screens */
+    background-size: cover;
+    background-position: center;
+    height: 300px; /* Adjust the height if needed */
+  }
+}
+
+/* Initially hide the mobile menu background */
+.container.d-lg-none {
+  background-color: transparent;
+  border: #000; /* Remove the background */
+}
+
+/* When the navbar is expanded, set the background color */
+.navbar-collapse.show {
+  background-color: white; /* Set the background color when the dropdown is open */
+}
+
+.navbar{
+  padding: 0px;
+}
+
+/* Default styles for larger screens */
+body {
+  overflow-x: hidden; /* Disable horizontal overflow */
+}
+
+.main-header-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px; /* Add padding for space around the items */
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+.header_bottom_border .logo {
+  flex-grow: 1; /* Ensure logo takes available space */
+}
+
+.main-menu nav ul {
+  display: flex;
+  justify-content: space-around; /* Distribute nav items evenly */
+  padding: 0;
+  margin: 0;
+}
+
+.main-menu ul li {
+  list-style: none;
+}
+
+.main-menu ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 20px; /* Adjust padding for proper spacing */
+  transition: color 0.3s ease;
+}
+
+.main-menu ul li a:hover {
+  color: red;
+}
+
+/* Ensure the menu is visible on larger screens */
+.d-none.d-lg-block {
+  display: block;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-nav .nav-link {
+  color: #333;
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.navbar-nav .nav-link:hover {
+  color: red;
+}
+
+/* Media Queries for Small Screens */
+@media only screen and (max-width: 768px) {
+  /* Main header */
+  .main-header-area {
+    flex-direction: row; /* Align logo and toggler horizontally */
+    justify-content: space-between; /* Ensure there's space between logo and toggler */
+    align-items: center; /* Vertically center items */
+    padding: 10px;
+  }
+
+  .header_bottom_border .logo {
+    flex-grow: 0; /* Reset flex-grow for logo */
+    margin-right: 10px; /* Add margin to separate logo from toggler */
+  }
+
+ 
+
+  .main-menu nav ul {
+    display: block;
+    width: 100%; /* Make nav items stack */
+    padding: 0;
+    margin: 0;
+  }
+
+  .main-menu ul li {
+    text-align: center;
+    margin-bottom: 10px; /* Space out the list items */
+  }
+
+  .main-menu ul li a {
+    padding: 10px 0; /* Adjust padding for stacked items */
+  }
+
+  /* Navbar toggler (hamburger) button */
+  .navbar-toggler {
+    display: block;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space below the toggler */
+  }
+
+  .navbar-collapse {
+    display: none; /* Hide the collapse menu initially */
+  }
+
+  /* Show the mobile navbar when toggled */
+  .navbar-collapse.show {
+    display: block;
+  }
+}
+
+/* Show the navbar on larger screens */
+@media (min-width: 769px) {
+  .navbar-toggler-div {
+    display: none; /* Hide the toggler button on larger screens */
+  }
+
+  .navbar-collapse {
+    display: block; /* Show the navigation menu */
+  }
+
+  .main-header-area {
+    flex-direction: row; /* Align logo and nav items horizontally */
+  }
+
+  .header_bottom_border .logo {
+    margin-right: 20px; /* Add space between logo and menu */
+  }
+
+  .main-menu nav ul {
+    display: flex;
+    justify-content: space-around; /* Align items horizontally */
+  }
+
+  .main-menu ul li {
+    text-align: left;
+  }
+
+  .main-menu ul li a {
+    padding: 10px ; /* Adjust spacing */
+  }
+}
+
     </style>
 
     <!--[if lte IE 9]>
@@ -72,63 +391,55 @@
         <div id="sticky-header" class="main-header-area">
           <div class="container">
             <div class="header_bottom_border">
-              <div class="row align-items-center">
-                <div class="col-xl-3 col-lg-3">
+              <div class="row align-items-center d-flex justify-content-between">
+                <!-- Logo and Toggler Together -->
+                <div class="col-xl-9 col-lg-9 d-flex justify-content-between align-items-center">
                   <div class="logo">
                     <a href="../main/index.html">
-                      <img
-                        src="img/logo.png"
-                        alt=""
-                        height="120"
-                        width="120"
-                        style="margin-left: -25px"
-                      />
+                      <img src="img/logo.png" alt="" height="120" width="120" />
                     </a>
                   </div>
+    
+                  <!-- Toggler for Mobile View -->
+                  <button
+                    class="navbar-toggler d-lg-none ml-auto"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
                 </div>
-                <div class="col-xl-6 col-lg-6 d-none d-lg-block">
+    
+                <!-- Navigation Menu for Large Screens -->
+                <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                   <div class="main-menu">
                     <nav>
                       <ul id="navigation">
                         <li><a href="../main/index.html">home</a></li>
-                        <li>
-                          <a href="../events/events.html" style="color: red"
-                            >events</a
-                          >
-                        </li>
-                        <!--event page link required-->
-                        <li><a href="../gallery2/gallery.html">gallery </a></li>
-                        <li><a href="../team/team.html">teams </a></li>
-                        <!--  <i class="ti-angle-down">-->
-
+                        <li><a href="../events/events.html" style="color: red">events</a></li>
+                        <li><a href="../gallery2/gallery.html">gallery</a></li>
+                        <li><a href="../team/team.html">teams</a></li>
                         <li><a href="../sports/sports.html">Sports</a></li>
                         <li><a href="../contact/contact.html">Contact</a></li>
                       </ul>
                     </nav>
                   </div>
                 </div>
-                <!-- navigation option-->
-                <div class="col-12 d-lg-none">
-                  <div class="mobile_menu"></div>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
+    
       <!-- Mobile Menu -->
-      <div class="container d-lg-none">
-        <nav
-          class="navbar navbar-expand-lg navbar-light bg-light"
-          style="background-color: black"
-        >
-          <a class="navbar-brand" href="index.html" style="margin-left: -32px">
-            <img src="img/logo.png" alt="" height="120" width="120" />
-          </a>
-
+      <div class="container d-lg-none" style="background-color: #000;">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav mx-auto">
               <li class="nav-item">
                 <a class="nav-link" href="../main/index.html">Home</a>
               </li>
@@ -153,7 +464,11 @@
       </div>
       <!-- End Mobile Menu -->
     </header>
+    
     <!-- header-end -->
+  
+    <!-- Add Spacing Between Navbar and Slider -->
+
 
     <!-- slider_area_start -->
     <div class="slider_area">
@@ -206,7 +521,7 @@
               </p>
               <p class="info1">
                 <i class="far fa-calendar-alt"></i>
-                Wed, March 27, 5:30 PM IST
+                Wed, Jan 1, 5:30 PM IST
               </p>
 
               <p
@@ -214,7 +529,7 @@
                 onmouseover="stopMarquee()"
                 onmouseout="startMarquee()"
               >
-                <marquee behavior="scroll" direction="up" scrollamount="10"
+                <marquee behavior="scroll" direction="up" scrollamount="5"
                   >CoepTech Pune's traditional day celebrated India's rich
                   heritage with cultural performances, ethnic attire, and a
                   festive ambiance, embodying the spirit of unity in diversity
@@ -228,7 +543,7 @@
 
       <div class="item-container1">
         <div class="img-container1">
-          <img class="img" src="./img/funfair.jpg" alt="Event image" />
+          <img class="img" src=".\img\funfair.png" alt="Event image" />
         </div>
 
         <div class="body-container1">
@@ -246,11 +561,11 @@
               </p>
               <p class="info1">
                 <i class="far fa-calendar-alt"></i>
-                Wed, March 27 & Thu, March 28, 5:00 PM IST
+                Thur, Jan 2, 5:00 PM IST
               </p>
 
               <p class="info description1">
-                <marquee behavior="" direction="up" scrollamount="10"
+                <marquee behavior="" direction="up" scrollamount="5"
                   >CoepTech Pune's fun fair is a vibrant extravaganza featuring
                   thrilling rides, engaging games, and delicious treats,
                   providing a memorable experience for all attendees to enjoy
@@ -264,7 +579,7 @@
 
       <div class="item-container1">
         <div class="img-container1">
-          <img class="img" src="./img/musical night.JPG" alt="Event image" />
+          <img class="img" src=".\img\musical night.png" alt="Event image" />
         </div>
 
         <div class="body-container1">
@@ -282,7 +597,7 @@
               </p>
               <p class="info1">
                 <i class="far fa-calendar-alt"></i>
-                Thu, March 28, 5:00 PM IST
+                Thu, Jan 2, 5:00 PM IST
               </p>
 
               <p class="info description1">
@@ -300,6 +615,7 @@
           </div>
         </div>
       </div>
+
       <div class="item-container1">
         <div class="img-container1">
           <img class="img" src="./img/inaug.jpeg" alt="Event image" />
@@ -320,11 +636,11 @@
               </p>
               <p class="info1">
                 <i class="far fa-calendar-alt"></i>
-                Fri, March 29, 9:00 AM IST
+                Fri, Jan 3, 9:00 AM IST
               </p>
 
               <p class="info description1">
-                <marquee behavior="" direction="up" scrollamount="10"
+                <marquee behavior="" direction="up" scrollamount="5"
                   >In CoepTech's realm, the Inauguration signifies the dawn of
                   fresh horizons, while "Shabda" illuminates the profound beauty
                   and potency of language and expression, weaving a tapestry of
@@ -338,7 +654,7 @@
 
       <div class="item-container1">
         <div class="img-container1">
-          <img class="img" src="./img/kavya.jpg" alt="Event image" />
+          <img class="img" src=".\img\kavya.jpg" alt="Event image" />
         </div>
 
         <div class="body-container1">
@@ -360,7 +676,7 @@
               </p>
 
               <p class="info description1">
-                <marquee behavior="" direction="up" scrollamount="9"
+                <marquee behavior="" direction="up" scrollamount="6"
                   >Kavya is the soulful artistry of poetry, blending emotions,
                   imagery, and rhythm into timeless masterpieces that resonate
                   deeply. It transcends words, capturing life's beauty and
@@ -377,7 +693,7 @@
         <div class="img-container1">
           <img
             class="img"
-            src="./img/faculty gathering.jpeg"
+            src=".\img\faculty gathering.JPG"
             alt="Event image"
           />
         </div>
@@ -401,7 +717,7 @@
               </p>
 
               <p class="info description1">
-                <marquee behavior="" direction="up" scrollamount="9"
+                <marquee behavior="" direction="up" scrollamount="6"
                   >CoepTech's faculty gathering cultivates collaboration,
                   innovation, and community cohesion for academic excellence and
                   collective growth.
@@ -414,7 +730,7 @@
 
       <div class="item-container1">
         <div class="img-container1">
-          <img class="img" src="./img/Drama.JPG" alt="Event image" />
+          <img class="img" src=".\img\Drama.jpg" alt="Event image" />
         </div>
 
         <div class="body-container1">
@@ -436,7 +752,7 @@
               </p>
 
               <p class="info description1">
-                <marquee behavior="" direction="up" scrollamount="10"
+                <marquee behavior="" direction="up" scrollamount="5"
                   >Drama encapsulates the captivating essence of human stories,
                   portraying emotions, conflicts, and resolutions on stage or
                   screen, inviting audiences into a world of theatrical magic
@@ -450,7 +766,7 @@
 
       <div class="item-container1">
         <div class="img-container1">
-          <img class="img" src="./img/variety.jpg" alt="Event image" />
+          <img class="img" src=".\img\variety.jpg" alt="Event image" />
         </div>
 
         <div class="body-container1">
@@ -472,7 +788,7 @@
               </p>
 
               <p class="info description1">
-                <marquee behavior="" direction="up" scrollamount="9"
+                <marquee behavior="" direction="up" scrollamount="6"
                   >"Variety Sangeet" is a vibrant celebration of musical
                   diversity, showcasing a fusion of melodies, rhythms, and
                   genres that captivate the senses and create an enchanting
@@ -541,7 +857,7 @@
               </p>
 
               <p class="info description1">
-                <marquee behavior="" direction="up" scrollamount="10"
+                <marquee behavior="" direction="up" scrollamount="5"
                   >"B.Tech Dance" represents a fusion of creativity and talent,
                   where students showcase their rhythmic skills and artistic
                   expressions through captivating choreography and performances,
@@ -555,7 +871,7 @@
 
       <div class="item-container1">
         <div class="img-container1">
-          <img class="img" src="./img/anc face.JPG" alt="Event image" />
+          <img class="img" src=".\img\anc face.jpg" alt="Event image" />
         </div>
 
         <div class="body-container1">
@@ -576,7 +892,7 @@
               </p>
 
               <p class="info description1">
-                <marquee behavior="" direction="up" scrollamount="9"
+                <marquee behavior="" direction="up" scrollamount="6"
                   >Face painting is a colorful art form that transforms faces
                   into vibrant canvases, unleashing creativity with intricate
                   designs, patterns, and themes, creating whimsical and
@@ -612,7 +928,7 @@
               </p>
 
               <p class="info description1">
-                <marquee behavior="" direction="up" scrollamount="10"
+                <marquee behavior="" direction="up" scrollamount="5"
                   >"Coep's Got Talent" is a dazzling showcase of the
                   university's diverse talents, featuring captivating
                   performances ranging from music and dance to comedy and more,
@@ -627,7 +943,7 @@
 
       <div class="item-container1">
         <div class="img-container1">
-          <img class="img" src="./img/concert.JPG" alt="Event image" />
+          <img class="img" src=".\img\concert.jpg" alt="Event image" />
         </div>
 
         <div class="body-container1">
@@ -649,7 +965,7 @@
               </p>
 
               <p class="info description1">
-                <marquee behavior="" direction="up" scrollamount="10"
+                <marquee behavior="" direction="up" scrollamount="5"
                   >The concert at CoepTech Pune is a mesmerizing experience,
                   featuring captivating performances by talented artists,
                   vibrant music, and an electrifying atmosphere that brings joy

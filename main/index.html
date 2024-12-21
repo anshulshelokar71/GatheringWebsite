@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
   <head>
@@ -9,8 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
     <!-- Place favicon.ico in the root directory -->
+    
+     <!-- Include jQuery 3.6.0 -->
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -32,9 +36,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
+
   </head>
 
   <body>
+ 
+  <style>
+   
+
+  </style>
     <!--[if lte IE 9]>
       <p class="browserupgrade">
         You are using an <strong>outdated</strong> browser. Please
@@ -43,28 +54,32 @@
       </p>
     <![endif]-->
 
-    <!-- header-start -->
     <header>
       <div class="header-area">
         <div id="sticky-header" class="main-header-area">
           <div class="container-fluid p-0">
-            <div
-              class="row align-items-center justify-content-between no-gutters"
-            >
-              <div class="col-xl-2 col-lg-2">
+            <div class="row align-items-center justify-content-between no-gutters">
+              
+              <!-- Logo and Hamburger Icon in the same column -->
+              <div class="col-12 col-lg-2 d-flex justify-content-between align-items-center">
+                <!-- Logo -->
                 <div class="logo-img">
                   <a href="../main/index.html">
-                    <img src="./img/gathering-logo.png" alt="" />
+                    <img src="./img/gathering-logo.png" alt="Logo" />
                   </a>
                 </div>
+                
+                <!-- Mobile Hamburger Icon -->
+                <div class="hamburger" id="mobile-menu">
+                  <i class="fas fa-bars"></i>
+                </div>
               </div>
+    
               <div class="col-xl-8 col-lg-8">
                 <div class="main-menu d-none d-lg-block">
                   <nav>
                     <ul id="navigation">
-                      <li>
-                        <a class="active" href="../main/index.html">home</a>
-                      </li>
+                      <li><a class="active" href="../main/index.html">home</a></li>
                       <li><a href="../events/events.html">Events</a></li>
                       <li><a href="../sports/sports.html">Sports</a></li>
                       <li><a href="../gallery2/gallery.html">Gallery</a></li>
@@ -74,7 +89,7 @@
                   </nav>
                 </div>
               </div>
-
+    
               <div class="col-12">
                 <div class="mobile_menu d-block d-lg-none"></div>
               </div>
@@ -83,6 +98,22 @@
         </div>
       </div>
     </header>
+    
+
+
+    <div class="curtain">
+      <div class="curtain__wrapper">
+        <input type="checkbox" checked>
+        
+        <div class="curtain__panel curtain__panel--left">
+          <img src=".\img\rang.png" alt="">
+          <br>
+        <!--  <h1>The Stage of</h1>-->
+        </div> <!-- curtain__panel -->
+        
+        <div class="curtain__content">
+          <!-- header-start -->
+    <br>
     <!-- header-end -->
     <!---->
     <!-- slider_area_start -->
@@ -98,7 +129,7 @@
           <!-- <css-doodle use="var(--rule)"></css-doodle> -->
           <div class="container">
             <div class="position_relv">
-              <h1 class="opcity_text d-none d-lg-block">GATHERING</h1>
+              <h1 class="opcity_text d-none d-lg-block">RangBhumi</h1>
               <!-- <div class = "tdimension">
                         <a href = "#">
                         </a>
@@ -125,6 +156,18 @@
         </div>
       </div>
     </div>
+        </div>
+        
+        <div class="curtain__panel curtain__panel--right">
+          <img src=".\img\Bhumhi.png" alt="">
+          <br>
+         <!-- <h1>Cultural Diversity</h1>-->
+        </div> <!-- curtain__panel -->
+        
+      </div> <!-- curtain__wrapper -->
+    </div> <!-- curtain -->
+
+    
 
     <!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
@@ -156,95 +199,128 @@
     <!-- <script src="script.js"></script> -->
 
     <script src="js/main.js"></script>
+    
+    <!-- Include slicknav JS (for responsive navbar functionality) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery-slicknav@1.0.10/dist/jquery.slicknav.min.js"></script>
 
     <script>
-      /* Store the element in el */
-      let el = document.getElementById("tilt");
+  $(document).ready(function() {
+  // 🔥 SLICKNAV MENU 🔥
+  $('.slicknav_menu').slicknav({
+    prependTo: '.header-area .main-header-area', // Specify where to prepend the menu
+    label: '' // Optional: add a label if needed for accessibility
+  });
+});
 
-      /* Get the height and width of the element */
-      const height = el.clientHeight;
-      const width = el.clientWidth;
+document.addEventListener("DOMContentLoaded", () => {
+  
+  /*** 🔥 TILT EFFECT 🔥 ***/
+  const el = document.getElementById("tilt");
+  const width = el.clientWidth;
+  const height = el.clientHeight;
+  let isMouseDown = false;
 
-      /*
-       * Add a listener for mousemove event
-       * Which will trigger function 'handleMove'
-       * On mousemove
-       */
-      el.addEventListener("mousemove", handleMove);
+  // Handle mouse move
+  el.addEventListener("mousemove", (e) => {
+    if (isMouseDown) return; // Skip tilt effect when mouse is down
+    const xVal = e.layerX;
+    const yVal = e.layerY;
+    const yRotation = 20 * ((xVal - width / 2) / width);
+    const xRotation = -20 * ((yVal - height / 2) / height);
+    const transformString = `perspective(500px) scale(1.1) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+    el.style.transform = transformString;
+  });
 
-      /* Define function a */
-      function handleMove(e) {
-        /*
-         * Get position of mouse cursor
-         * With respect to the element
-         * On mouseover
-         */
-        /* Store the x position */
-        const xVal = e.layerX;
-        /* Store the y position */
-        const yVal = e.layerY;
+  // Handle mouse out
+  el.addEventListener("mouseout", () => {
+    if (!isMouseDown) {
+      el.style.transform = "perspective(500px) scale(1) rotateX(0) rotateY(0)";
+    }
+  });
 
-        /*
-         * Calculate rotation valuee along the Y-axis
-         * Here the multiplier 20 is to
-         * Control the rotation
-         * You can change the value and see the results
-         */
-        const yRotation = 20 * ((xVal - width / 2) / width);
+  // Handle mouse down
+  el.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+    isMouseDown = true;
+    el.style.transform = "perspective(500px) scale(0.9) rotateX(0) rotateY(0)";
+  });
 
-        /* Calculate the rotation along the X-axis */
-        const xRotation = -20 * ((yVal - height / 2) / height);
+  // Handle mouse up
+  el.addEventListener("mouseup", () => {
+    isMouseDown = false;
+    el.style.transform = "perspective(500px) scale(1.1) rotateX(0) rotateY(0)";
+  });
 
-        /* Generate string for CSS transform property */
-        const string =
-          "perspective(500px) scale(1.1) rotateX(" +
-          xRotation +
-          "deg) rotateY(" +
-          yRotation +
-          "deg)";
+  /*** 🔥 NAVIGATION INTERFERENCE PREVENTION 🔥 ***/
+  document.querySelectorAll('.main-menu a, #button').forEach(element => {
+    element.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevents click propagation to parent elements
+    });
+  });
 
-        /* Apply the calculated transformation */
-        el.style.transform = string;
-      }
+  /*** 🔥 CURTAIN TOGGLE 🔥 ***/
+  const curtainCheckbox = document.querySelector('.curtain__wrapper input[type="checkbox"]'); 
 
-      /* Add listener for mouseout event, remove the rotation */
-      el.addEventListener("mouseout", function () {
-        el.style.transform =
-          "perspective(500px) scale(1) rotateX(0) rotateY(0)";
+  if (curtainCheckbox) {
+    document.querySelectorAll('.main-menu a, #button').forEach(element => {
+      element.addEventListener('click', (e) => {
+        if (curtainCheckbox.checked) {
+          curtainCheckbox.checked = false; // Close the curtain if it was open
+        }
+        e.stopPropagation(); // Prevents toggle
       });
+    });
+  }
 
-      /* Add listener for mousedown event, to simulate click */
-      el.addEventListener("mousedown", function () {
-        el.style.transform =
-          "perspective(500px) scale(0.9) rotateX(0) rotateY(0)";
+  // Close curtain only when clicking outside the navigation or the celebrate button
+  document.addEventListener('click', (e) => {
+    const isClickInsideNav = e.target.closest('.main-menu') || e.target.closest('#button');
+    if (!isClickInsideNav && curtainCheckbox && curtainCheckbox.checked) {
+      curtainCheckbox.checked = false; // Close curtain
+    }
+  });
+
+  /*** 🔥 CONFETTI EFFECT 🔥 ***/
+  const button = document.querySelector("#button");
+  const jsConfetti = new JSConfetti();
+
+  button.addEventListener("click", (e) => {
+    fireConfetti();
+    e.stopPropagation(); // Stop it from affecting the curtain toggle
+  });
+
+  function fireConfetti() {
+    jsConfetti.addConfetti({
+      emojis: ["🎈", "⚡️", "💥", "✨", "💫", "🌸"],
+    });
+    setTimeout(() => {
+      jsConfetti.addConfetti({
+        emojis: ["🎉", "🥳", "🎊", "💥", "✨", "🌸"],
       });
+    }, 2000);
+  }
+});
 
-      /* Add listener for mouseup, simulate release of mouse click */
-      el.addEventListener("mouseup", function () {
-        el.style.transform =
-          "perspective(500px) scale(1.1) rotateX(0) rotateY(0)";
-      });
-    </script>
+// Toggler button functionality
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-links'); // Ensure this matches your actual links class
 
-    <script>
-      const button = document.querySelector("#button");
-      const canvas = document.querySelector("#confetti");
-      const jsConfetti = new JSConfetti();
+mobileMenu.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  mobileMenu.querySelector('i').classList.toggle('fa-bars');
+  mobileMenu.querySelector('i').classList.toggle('fa-times');
+});
 
-      // Function to add confetti
-      function addConfetti() {
-        jsConfetti
-          .addConfetti({
-            emojis: ["🎈", "⚡️", "💥", "✨", "💫", "🌸"],
-          })
-          .then(() => jsConfetti.addConfetti());
-      }
+// Handling Curtain Effect to Close on Outside Click
+document.addEventListener("click", (e) => {
+  const curtainCheckbox = document.querySelector('.curtain__wrapper input[type="checkbox"]');
+  const isClickInsideNav = e.target.closest('.main-menu') || e.target.closest('.hamburger');
 
-      // Automatically add confetti when the page loads
-      // document.addEventListener('DOMContentLoaded', addConfetti);
+  if (!isClickInsideNav && curtainCheckbox && curtainCheckbox.checked) {
+    curtainCheckbox.checked = false; // Close the curtain
+  }
+});
+ </script>
 
-      // Add confetti when the button is clicked
-      button.addEventListener("click", addConfetti);
-    </script>
   </body>
-</html>
+</html> 

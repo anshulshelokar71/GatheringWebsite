@@ -1368,6 +1368,7 @@ h3 {
   /* line 241, ../../Arafath/CL/December/236. Event-02/HTML/scss/_header.scss */
   .header-area .main-header-area.sticky {
     padding: 10px 10px;
+    padding-left: 50px;
   }
 }
 
@@ -1939,6 +1940,16 @@ h3 {
   background: white;
   color: #001d38;
   border: none;
+}
+
+/* For smaller screens (below 768px) */
+@media only screen and (max-width: 768px) {
+  .slider_area {
+    background-image: url(../img/banner/banner2.png); /* Apply background image for small screens */
+    background-size: cover;
+    background-position: center;
+    height: 300px; /* Adjust the height if needed */
+  }
 }
 
 /* line 1, ../../Arafath/CL/December/236. Event-02/HTML/scss/_about.scss */
@@ -5850,7 +5861,7 @@ body1 {
 .item-container1 {
   position: relative;
   margin: 24px;
-  width: 320px;
+  width: 420px;
   height: 570px;
   overflow: hidden;
   background-color: #fff;
@@ -5973,4 +5984,8 @@ body1 {
 
 .action1:hover {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-brand{
+  margin-left: 3%;
 }

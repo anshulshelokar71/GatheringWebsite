@@ -1,6 +1,145 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,500i,600,700,700i,800,800i,900&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,500i,600,700,700i,800,800i,900&display=swap");
 
+/* Curtain container styles */
+.curtain {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: url(..\img\background.jpg) no-repeat center center; /* Replace with your image path */
+  background-size: cover; /* Ensures the image covers the entire curtain area */
+}
+
+/* Curtain panel styles */
+.curtain__panel {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  float: left;
+  position: relative;
+  width: 50%;
+  height: 100vh;
+  transition: all 1s ease-out;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background to show the image behind */
+  animation: wave 10s linear infinite; /* Animation for wave effect */
+}
+
+/* Left curtain panel */
+.curtain__panel--left {
+  justify-content: flex-end;
+  transform: translateX(-100%);
+}
+
+.curtain__panel--left img{
+  width: 270px;
+  height: 150px;
+  display: block;
+}
+
+.curtain__panel--right img{
+  width: 270px;
+  height: 150px;
+  display: block;
+}
+
+/* Right curtain panel */
+.curtain__panel--right {
+  justify-content: flex-start;
+  transform: translateX(100%);
+}
+
+/* Animation for the background image movement */
+@keyframes wave {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+/* Curtain content styling */
+.curtain__content {
+  align-items: center;
+ /* background: #333;*/
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  padding: 1rem 0;
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+  width: 100%;
+  background: transparent;
+}
+
+.curtain__content img {
+  width: 20%;
+}
+
+.curtain__wrapper {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.curtain__wrapper input[type="checkbox"] {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  opacity: 0;
+  top: 0;
+  left: 0;
+}
+
+.main-menu a, 
+.button-53 {
+  pointer-events: auto !important; /* Ensure buttons and links are clickable */
+  z-index: 101; /* Ensure higher z-index than the input checkbox */
+}
+
+.curtain__wrapper input[type="checkbox"]:checked ~ .curtain__panel--left {
+  transform: translateX(0);
+}
+
+.curtain__wrapper input[type="checkbox"]:checked ~ .curtain__panel--right {
+  transform: translateX(0);
+}
+
+
+
+
+body {
+  background: linear-gradient(to right, orange, purple);
+  background-size: cover;
+}
+.slider_area{
+  width: 100%;
+  margin-top: 60px;
+}
+
+.header-area, 
+.main-menu, 
+.button-53 {
+  position: relative;
+  z-index: 102; /* Above the checkbox */
+}
+
+.main-menu {
+  position: relative; 
+  z-index: 102; /* Higher than curtain */
+}
+
+.main-menu a {
+  pointer-events: auto;
+}
+
 body {
   overflow-y: scroll; /* Allow vertical scrolling */
   overflow-x: hidden; /* Hide horizontal scrollbar */
